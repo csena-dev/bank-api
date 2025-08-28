@@ -19,7 +19,7 @@ API bancária desenvolvida em Node.js com TypeScript, utilizando Express.  Permi
 
 git clone https://github.com/csena-dev/bank-api.git
 
-cd bancohealth
+cd bank-api
 
 **2. Instale as dependências:** 
 
