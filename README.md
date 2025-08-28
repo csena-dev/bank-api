@@ -40,7 +40,7 @@ yarn dev
 
 **5. Pronto! Agora só confirmar se o projeto esta rodando:**
 
-Irá exibir no terminal:
+Irá exibir no terminal/cmd:
 
 *Servidor rodando na url http://localhost:3001 :)*
 
