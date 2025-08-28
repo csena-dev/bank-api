@@ -1,4 +1,4 @@
-# APIs - Banck-Api
+# APIs - Bank-Api
 
 
 API bancária desenvolvida em Node.js com TypeScript, utilizando Express.  Permite gerenciar usuários, contas, saldo e dívidas.
