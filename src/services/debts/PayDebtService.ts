@@ -29,23 +29,22 @@ class PayDebtService {
                 return { success: false, error: 'Fatura não encontrada' };
             }
 
-            // Verificar se fatura pertence ao usuário
-            if (fatura.userId !== idUsuario) {
+           
+           if (fatura.userId !== idUsuario) {
                 return { success: false, error: 'Fatura não autorizada' };
             }
 
-            // Verificar se fatura já foi paga
+
             if (fatura.status === 'paid') {
                 return { success: false, error: 'Fatura já foi paga' };
             }
 
-            // Verificar se conta existe e pertence ao usuário
             const conta = MemoryDatabase.buscarContaPorNumeroEUsuario(fatura.accountNumber, idUsuario);
             if (!conta) {
                 return { success: false, error: 'Conta não encontrada' };
             }
 
-            // Verificar saldo suficiente
+            
             if (conta.balance < fatura.amount) {
                 return { success: false, error: 'Saldo insuficiente' };
             }

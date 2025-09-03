@@ -23,25 +23,20 @@ class AddBalanceService {
         };
         error?: string;
     }> {
-        console.log('\n💰 AddBalanceService.execute() iniciado');
-        console.log(`   Conta: ${numeroConta}`);
-        console.log(`   Usuário: ${idUsuario}`);
-        console.log(`   Valor: R$ ${valor}`);
 
         try {
             // Verificar se conta existe e pertence ao usuário
             const conta = MemoryDatabase.buscarContaPorNumeroEUsuario(numeroConta, idUsuario);
             if (!conta) {
-                console.log('❌ Conta não encontrada');
+                
                 return { success: false, error: 'Conta não encontrada' };
             }
 
-            console.log(`✅ Conta encontrada - Saldo atual: R$ ${conta.balance}`);
 
             // Adicionar saldo
             const saldoAdicionado = MemoryDatabase.adicionarSaldo(numeroConta, valor);
             if (!saldoAdicionado) {
-                console.log('❌ Erro ao adicionar saldo');
+                
                 return { success: false, error: 'Erro ao adicionar saldo' };
             }
 
@@ -49,7 +44,6 @@ class AddBalanceService {
             const contaAtualizada = MemoryDatabase.buscarContaPorNumeroEUsuario(numeroConta, idUsuario);
             const novoSaldo = contaAtualizada?.balance || 0;
 
-            console.log(`✅ Saldo atualizado: R$ ${conta.balance} → R$ ${novoSaldo}`);
 
             // Criar transação de depósito
             const novaTransacao: Transaction = {
@@ -64,7 +58,6 @@ class AddBalanceService {
             // Salvar transação
             MemoryDatabase.adicionarTransacao(novaTransacao);
 
-            console.log('✅ AddBalanceService concluído com sucesso');
 
             return {
                 success: true,
@@ -75,7 +68,6 @@ class AddBalanceService {
             };
 
         } catch (erro) {
-            console.error('💥 Erro no AddBalanceService:', erro);
             return { success: false, error: 'Erro interno do serviço' };
         }
     }

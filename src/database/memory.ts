@@ -52,9 +52,8 @@ class MemoryDatabase {
     static adicionarSaldo(numeroConta: string, valor: number): boolean {
         const conta = this.contas.find(conta => conta.accountNumber === numeroConta);
         if (conta) {
-            const saldoAnterior = conta.balance;
             conta.balance += valor;
-            console.log(`💰 Saldo adicionado: ${numeroConta} | R$ ${saldoAnterior} → R$ ${conta.balance}`);
+
             return true;
         }
         return false;
@@ -110,7 +109,7 @@ class MemoryDatabase {
             if (novoStatus === 'paid') {
                 fatura.paidAt = new Date();
             }
-            console.log(`📋 Status fatura atualizado: ${faturaId} | ${statusAnterior} → ${novoStatus}`);
+
             return true;
         }
         return false;
@@ -144,7 +143,7 @@ class MemoryDatabase {
         this.faturas = [];
         this.contadorConta = 1;
         this.contadorFatura = 1;
-        console.log('🗑️ Todos os dados limpos da memória');
+
     }
 }
 

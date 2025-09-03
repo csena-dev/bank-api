@@ -20,14 +20,6 @@ app.use(express.json());
 // Rotas principais
 app.use('/api', router);
 
-// Health check
-app.get('/health', (req, res) => {
-    res.json({
-        status: 'API Bancária rodando!',
-        timestamp: new Date().toISOString(),
-        version: '1.0.0'
-    });
-});
 
 
 //Configuracao do Swagger

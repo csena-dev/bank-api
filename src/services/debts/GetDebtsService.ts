@@ -20,11 +20,10 @@ class GetDebtsService {
             }
 
 
-            // Buscar faturas da conta
             const faturas = MemoryDatabase.buscarFaturasPorConta(numeroConta);
             
 
-            // Ordenar por data de criação (mais recente primeiro)
+            // Ordenar por data de criacao (mais recente primeiro)
             const faturasOrdenadas = faturas
                 .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
                 .map(fatura => ({ ...fatura })); // Retornar cópias
@@ -36,7 +35,7 @@ class GetDebtsService {
             };
 
         } catch (erro) {
-            console.error('💥 Erro no GetDebtsService:', erro);
+            console.error('Erro no GetDebtsService:', erro);
             return { success: false, error: 'Erro interno do serviço' };
         }
     }
